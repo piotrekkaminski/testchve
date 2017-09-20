@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "engines": {
     "node": "8.5.0"
-  }
+  },
   "scripts": {
     "test": "mocha test --timeout 600000",
     "start": "node bin/coin-hive"
