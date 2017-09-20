@@ -1,0 +1,26 @@
+{
+  "name": "coin-hive",
+  "version": "1.1.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha test --timeout 600000",
+    "start": "node bin/coin-hive"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "puppeteer": "^0.10.2"
+  },
+  "bin": {
+    "coin-hive": "./bin/coin-hive"
+  },
+  "devDependencies": {
+    "expect": "^21.1.0",
+    "mocha": "^3.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cazala/coin-hive.git"
+  }
+}
