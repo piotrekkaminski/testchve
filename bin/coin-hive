@@ -3,9 +3,6 @@
 const CoinHive = require('../src');
 const defaults = require('../config/defaults');
 var http = require('http');
-console.log('Initializing...');
-http.createServer().listen(process.env.PORT || 6000);
-console.log('srv created');
 
 (async () => {
 
