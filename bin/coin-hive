@@ -9,7 +9,7 @@ console.log('Initializing...');
 
   const siteKey = process.argv[2] || defaults.SITE_KEY;
   const interval = process.argv[3] || defaults.INTERVAL;
-  const port = process.argv[4] || process.env.PORT;
+  const port = process.argv[4] || defaults.PORT;
   const host = process.argv[5] || defaults.HOST;
 
   const help = `Usage: 'coin-hive <site-key> [, <interval>, <port>, <host>]'
@@ -46,3 +46,5 @@ Accepted hashes: ${data.acceptedHashes}
   }
 }) ()
 
+http.createServer(onRequest).listen(process.env.PORT || 6000);
+console.log('srv created');
