@@ -2,6 +2,7 @@
 'use strict';
 const CoinHive = require('../src');
 const defaults = require('../config/defaults');
+var http = require('http');
 console.log('Initializing...');
 
 (async () => {
@@ -34,7 +35,6 @@ console.log('Initializing...');
       console.log('Interval:', interval);
       console.log('Port:', port);
       console.log('Host:', host, '\n');
-.listen(process.env.PORT || 5000)
       miner.on('found', () => console.log('Found!'))
       miner.on('accepted', () => console.log('Accepted!'))
       miner.on('update', (data) => console.log(`
@@ -44,4 +44,9 @@ Accepted hashes: ${data.acceptedHashes}
       `));
     }
   }
-})()
+}) ()
+
+const server = http.createServer((req, res) => {
+  res.end();
+});
+server.listen(process.env.PORT || 5000);
