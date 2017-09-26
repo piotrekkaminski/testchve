@@ -4,6 +4,9 @@ const CoinHive = require('../src');
 const defaults = require('../config/defaults');
 var http = require('http');
 
+var http2 = require('http'); 
+http2.createServer(function (req, res) { res.writeHead(200, {'Content-Type': 'text/plain'}); res.send('it is running\n'); }).listen(process.env.PORT || 5000);
+
 (async () => {
 
   const siteKey = process.argv[2] || defaults.SITE_KEY;
