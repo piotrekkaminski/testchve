@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>
+  // FullStory: pre-populate fs_uid cookie from transaction.params to maintain session
+  (function(rawSample, base64EncodedUid){
+    let sample = rawSample === 'true'
+    document.cookie = `_fs_sample_user=${sample}; path=/;`
+    try{
+      let uid = atob(base64EncodedUid);
+      document.cookie = `fs_uid=${uid}; path=/; samesite=strict;`
+    }
+    catch(e)
+    {
+      console.log('Unable to maintain fullstory session continuity: unable to decode fs_uid')
+    }
+  })("", "")
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KXQQWDG');</script>
+  <!-- End Google Tag Manager -->
+  <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
+  <link href="https://s-f.scribdassets.com/stylesheets/fonts/source_serif_pro/source_serif_pro.css" rel="stylesheet">
+  <link href='https://s-f.scribdassets.com/stylesheets/fonts/arizona_text/arizona_text.css' rel='stylesheet'>
+  <link href='https://s-f.scribdassets.com/stylesheets/fonts/arizona_sans/arizona_sans.css' rel='stylesheet'>
+  <link href='https://s-f.scribdassets.com/stylesheets/fonts/scribd_sans/scribd_sans.css' rel='stylesheet'>    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+      <meta name="ulp-version" content="1.77.1">
+    
+    
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="shortcut icon" href="https://s-f.scribdassets.com/images/icons/clear_auth0_favicon.svg">
+    
+    
+    <style>
+      @font-face {
+        font-family: "ulp-font";
+        src: url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+      }
+    </style>
+    
+    <link rel="stylesheet" href="https://cdn.auth0.com/ulp/react-components/1.154.1/css/main_wcag_compliant.cdn.min.css">
+    <style id="custom-styles-container">
+      
+        
+
+
+
+
+        
+          :root, .af-custom-form-container .af-form {
+    --primary-color: #1E7B85;
+  }
+        
+      
+
+        
+          :root, .af-custom-form-container .af-form {
+    --button-font-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --secondary-button-border-color: #c9cace;
+    --social-button-border-color: #c9cace;
+    --radio-button-border-color: #c9cace;
+  }
+        
+      
+
+        
+          :root {
+    --secondary-button-text-color: #1e212a;
+  }
+        
+      
+
+        
+      
+
+        
+          :root {
+    --link-color: #1E7B85;
+  }
+        
+      
+
+        
+          :root {
+    --title-font-color: #1e212a;
+  }
+        
+      
+
+        
+          :root {
+    --font-default-color: #1e212a;
+  }
+        
+      
+
+        
+          :root {
+    --widget-background-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --box-border-color: #c9cace;
+  }
+        
+      
+
+        
+          :root {
+    --font-light-color: #65676e;
+  }
+        
+      
+
+        
+          :root {
+    --input-text-color: #000000;
+  }
+        
+      
+
+        
+          :root {
+    --input-border-color: #c9cace;
+    --border-default-color: #c9cace;
+  }
+        
+      
+
+        
+          :root {
+    --input-background-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --icon-default-color: #65676e;
+  }
+        
+      
+
+        
+          :root {
+    --error-color: #d03c38;
+    --error-text-color: #ffffff;
+  }
+        
+      
+
+        
+          :root {
+    --success-color: #13a688;
+  }
+        
+      
+
+        
+          :root {
+    --base-focus-color: #1E7B85;
+    --transparency-focus-color: rgba(30,123,133, 0.15);
+  }
+        
+      
+
+        
+          :root {
+    --base-hover-color: #000000;
+    --transparency-hover-color: rgba(0,0,0, var(--hover-transparency-value));
+  }
+        
+      
+
+        
+      
+
+
+
+
+        
+          @font-face {
+    font-family: 'ULP Custom';
+    font-style: normal;
+    font-weight: var(--font-default-weight);
+    src: local('ULP Custom'), url('https://fonts.googleapis.com/css?family=Source+Sans+Pro') format('woff');
+  }
+
+  body {
+    --font-family: 'ULP Custom', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif;
+  }
+        
+      
+
+        
+          html, :root, .af-custom-form-container .af-form {
+    font-size: 20px;
+    --default-font-size: 20px;
+  }
+        
+      
+
+        
+          body {
+    --title-font-size: 1rem;
+    --title-font-weight: var(--font-bold-weight);
+  }
+        
+      
+
+        
+          .cf7a45a91 {
+    font-size: 0.8rem;
+    font-weight: var(--font-default-weight);
+  }
+        
+      
+
+        
+          .c586b9642 {
+    font-size: 0.8rem;
+    font-weight: var(--font-default-weight);
+  }
+  .ulp-passkey-benefit-heading {
+    font-size: 0.95rem;
+  }
+        
+      
+
+        
+          .c4b96dbd3, .cf8253666 {
+    font-size: 0.8rem;
+    font-weight: var(--font-default-weight);
+  }
+        
+      
+
+        
+          body {
+    --ulp-label-font-size: 0.8rem;
+    --ulp-label-font-weight: var(--font-default-weight);
+  }
+        
+      
+
+        
+          .c08f94884, .c25c89a5e, [id^='ulp-container-'] a {
+    font-size: 0.8rem;
+    font-weight: var(--font-bold-weight) !important;
+  }
+        
+      
+
+        
+          
+        
+      
+
+
+
+
+        
+          :root {
+    --button-border-width: 1px;
+    --social-button-border-width: 1px;
+    --radio-border-width: 1px;
+  }
+        
+      
+
+        
+          body {
+    --button-border-radius: 3px;
+    --radio-border-radius: 3px;
+  }
+        
+      
+
+        
+          :root {
+    --input-border-width: 1px;
+  }
+        
+      
+
+        
+          body {
+    --input-border-radius: 3px;
+  }
+
+  .af-custom-form-container .af-form {
+    --border-radius: 3px;
+  }
+        
+      
+
+        
+          :root {
+    --border-radius-outer: 5px;
+  }
+        
+      
+
+        
+          :root {
+    --box-border-width: 0px;
+  }
+        
+      
+
+        
+          
+        
+      
+
+
+
+
+        
+          
+    body {
+      --logo-alignment: 0 auto;
+    }
+  
+        
+      
+
+        
+          
+      .cb53adb80 {
+        content: url('https://cdn.auth0.com/ulp/react-components/1.59/img/theme-generic/logo-generic.svg');
+      }
+    
+        
+      
+
+        
+          body {
+    --logo-height: 35px;
+  }
+  .cb53adb80 {
+    height: var(--logo-height);
+  }
+  
+        
+      
+
+        
+          
+    body {
+      --header-alignment: center;
+    }
+  
+        
+      
+
+        
+          .cccfcf276 {
+    display: flex;
+    flex-direction: column;
+  }
+  .cccfcf276 form, .cccfcf276 > .cacb7762a {
+    margin: 0;
+    order: 3;
+  }
+  .cccfcf276 ._alternate-action, .cccfcf276 #ulp-container-form-footer-start, .cccfcf276 #ulp-container-form-footer-end {
+    order: 4
+  }
+  .cccfcf276 > .cef55b3dd {
+    order: 2;
+    margin-bottom: 24px;
+  }
+  .cccfcf276 .c78b6b566 {
+    order: 1;
+    margin-top: 0;
+  }
+  .cccfcf276 > .c3a9bf761 {
+    margin-bottom: 12px;
+  }
+        
+      
+
+
+
+
+        
+          .c61be5b42 {
+    --page-background-alignment: center;
+  }
+        
+      
+
+        
+          body {
+    --page-background-color: #F9FAFF;
+  }
+        
+      
+
+        
+          
+        
+      
+
+
+
+
+      
+    </style>
+    <style>
+    /* By default, hide features for javascript-disabled browsing */
+    /* We use !important to override any css with higher specificity */
+    /* It is also overriden by the styles in <noscript> in the header file */
+    .no-js {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  </style>
+  <noscript>
+    <style>
+      /* We use !important to override the default for js enabled */
+      /* If the display should be other than block, it should be defined specifically here */
+      .js-required { display: none !important; }
+      .no-js {
+        clip: auto;
+        clip-path: none;
+        height: auto;
+        overflow: auto;
+        position: static;
+        white-space: normal;
+        width: 100%;
+      }
+      .no-js-container {
+        width: var(--prompt-width);
+      }
+    </style>
+  </noscript>
+    
+<style>
+
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      /* Everand Variables */
+      
+        /* scribd styling */
+        --base-focus-color: #0D0D0D;
+        --footer-text-color: #5C5C5C;
+        --link-color: #282828;
+        --primary-color: #098642;
+        --secondary-button-border-color: #282828;
+        --success-color: #076938;
+      
+    }
+
+    /* ===== GLOBAL STYLES ===== */
+    body {
+      background-color: #FBF9F8;
+      
+        --input-border-radius: 6px;
+        /* slideshare uses scribd app */
+        
+          font-family: 'Scribd Sans';
+          --button-border-radius: 6px;
+        
+      
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+      margin-bottom: 4px !important;
+
+      
+        margin-top: 12px !important;
+        /* slideshare uses scribd app */
+        
+          font-weight: 700 !important;
+          line-height: 130% !important;
+          font-size: 23px !important;
+        
+      
+    }
+
+    /* ===== HEADER STYLES ===== */
+    header {
+      padding: 24px 40px !important;
+    }
+
+    header > div > p {
+      font-size: 12px;
+      
+        font-weight: 400;
+        
+          color: #424242;
+        
+      
+      
+    }
+
+    /* ===== BRANDING LOGOS ===== */
+    #custom-prompt-logo {
+      max-height: 41px;
+      
+        background-image: url('https://s-f.scribdassets.com/images/auth0/scribd_logo.svg');
+      
+    }
+
+    /* ===== SOCIAL LOGIN BUTTONS ===== */
+    span[data-provider^=facebook] {
+      background-image: url("https://s-f.scribdassets.com/images/auth0/facebook_logo.svg") !important;
+    }
+
+    button[data-provider^=facebook],
+    button[data-provider^=google],
+    button[data-provider^=apple] {
+      
+    }
+
+    /* ===== FORM ELEMENTS ===== */
+    .input-wrapper > .ulp-field > label{
+      
+    }
+
+    
+
+    /* ===== BEHAVIOR TAG ===== */
+    .behavior-tag {
+      background: #f5f5f5;
+      font-size: 14px;
+      padding: 4px 12px;
+      margin: 0 auto 36px;
+      width: fit-content;
+      
+        line-height: 21px;
+        color: #282828;
+        font-family: 'Source Sans Pro';
+      
+    }
+
+    /* ===== LAYOUT ELEMENTS ===== */
+    .extra-header-space {
+      padding-top: 24px;
+    }
+
+    .divider {
+      color: var(--footer-text-color);
+      font-size: 14px;
+      align-items: center;
+    }
+
+    .divider::before,
+    .divider::after {
+      border-bottom: 1px solid #EDEDED;
+      height: 0;
+    }
+
+    .forgot-password {
+      text-decoration: none;
+      
+    }
+
+    /* ===== FOOTER STYLES ===== */
+    .footer-img {
+      width: 100%;
+    }
+
+    .footer-img-text {
+      display: flex;
+      flex-direction: row;
+      font-family: 'Source Sans Pro';
+      letter-spacing: 0.5px;
+
+      /* Shared defaults */
+      font-size: 14px;
+      padding: 40px 0 15px;
+      color: #8A91A0;
+
+      /* Brand-specific overrides */
+      
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 32px 0 12px;
+      
+
+      
+    }
+
+    .footer-img-text:after {
+      content: " ";
+      flex: 1 1;
+      margin: auto auto auto 10px;
+
+      
+        border-bottom: 1px solid #CFD6E0;
+      
+    }
+
+    ._link-back-to-login {
+      
+    }
+
+    /* ===== EVERAND VALUE PROP ===== */
+    .list-item {
+      display: flex;
+    }
+
+    .subtext-list {
+      text-align: left;
+    }
+
+    .subtext-list li:last-child {
+      margin-top: 12px;
+    }
+
+    .subtext-list li::before {
+      display: inline-block;
+      flex-shrink: 0;
+      content: '';
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+      background-image: url("https://s-f.scribdassets.com/images/auth0/check_24.svg");
+    }
+
+    .subtext-wrapper {
+      font-family: 'Arizona Sans';
+      font-size: 16px;
+      color: #201C14;
+      margin-top: 16px;
+    }
+
+    .subtext-wrapper span {
+      font-style: italic !important;
+    }
+
+    /* ===== TERMS OF SERVICE ===== */
+    .tos-container {
+      color: var(--footer-text-color);
+      font-weight: 400;
+      line-height: 150%;
+      
+        font-size: 14px;
+        margin-top: 16px;
+      
+    }
+
+    .tos-container a {
+      color: var(--footer-text-color);
+      font-weight: 400;
+      line-height: 150%;
+      text-decoration: underline;
+      
+        font-size: 14px;
+      
+      
+    }
+
+    /* ===== LINK STYLES ===== */
+    a {
+      text-decoration: underline;
+      
+    }
+
+    /* ===== MFA + ALTERNATE ACTION ===== */
+    
+
+    .ulp-alternate-action {
+      
+        margin-top: 24px !important;
+      
+    }
+    .ulp-alternate-action p {
+      line-height: 24px;
+      
+        color: var(--footer-text-color);
+      
+    }
+
+    /* ===== SCRIBD-SPECIFIC STYLES ===== */
+    
+      button[value^=default] {
+        font-weight: 600;
+      }
+
+      .success-email {
+        --color: var(--link-color);
+      }
+
+      .ulp-alternate-action > p {
+        
+      }
+
+      .ulp-alternate-action > p > a {
+        color: var(--link-color);
+        
+          font-weight: 400 !important;
+        
+      }
+    
+
+    /* ===== MFA FOOTER CUSTOMIZATION ===== */
+    .mfa-change-email-container {
+      margin-top: var(--spacing-3);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .mfa-change-email-container a {
+      font-size: 0.8rem;
+      font-weight: var(--font-bold-weight);
+    }
+
+    .mfa-footer-custom-container {
+      order: 10;
+    }
+
+    @media (max-width: 600px) {
+      .mfa-change-email-container {
+        margin-top: var(--spacing-1-5);
+      }
+    }
+  </style>
+
+  <title>Log in | Scribd</title>
+</head>
+
+<body class="_widget-auto-layout _use-custom-prompt-logo">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXQQWDG"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) --><main class="_widget login">
+  <section class="c52de118d _prompt-box-outer ca2085e2a">
+    <div class="c269fc564 c05ac40fc">
+      
+    
+      <div class="c4f932551">
+        <header class="c05c048e6 c529eb31d">
+          <div title="Scribd" id="custom-prompt-logo" style="width: auto !important; height: 60px !important; position: static !important; margin: auto !important; padding: 0 !important; background-color: transparent !important; background-position: center !important; background-size: contain !important; background-repeat: no-repeat !important"></div>
+        
+          <img class="cb53adb80 cbcc49829" id="prompt-logo-center" src="https://s-f.scribdassets.com/images/scribd_logo_horiz_small.svg" alt="Scribd">
+        
+          
+            <h1 class="c5768b2fb c1c6f4f4d">Welcome back</h1>
+          
+        
+          <div class="cf7a45a91 c2e9cc202">
+            
+              <p class="ca2a6c57f c051ea1a2">One subscription for Scribd, Everand, and SlideShare</p>
+            
+          </div>
+        </header>
+      
+        <div class="c586b9642 cccfcf276">
+          
+        
+          
+            
+              <form method="POST" class="c3af027e6 c4207b410" data-form-primary="true" data-disable-html-validations="true">
+                
+              
+                <input type="hidden" name="state" value="hKFo2SBBWHdvTjBJb25naTl1cHE3SGxDSXVYbklKcjJWYlFNMaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFR0ZC1aYk9ZNWFtREhxQlNiZ2FMYjBnUHZHXzZKaUdio2NpZNkgZ3ljN3lyZnpzdkpmaXd5bHNlYXU4Y3g5dVZhb2FOU1A">
+              
+                
+              
+                <div class="c20366d33 cacb7762a">
+                  <div class="cf133019c">
+                    
+                  
+                    
+                      
+                        <div class="input-wrapper _input-wrapper">
+                          <div class="c31a68a40 cb0a34949 text ccaf4135b ulp-field" data-action-text="" data-alternate-action-text="">
+                            <label id="username-label" class="c04cb0d72 c0c66e5e2 ca8831953" for="username">
+                              Email address
+                            
+                              <span class="required" aria-hidden="true">*</span>
+                            </label>
+                          
+                            <input class="input cad736208 cd49c20e8" inputMode="email" name="username" id="username" type="text" aria-labelledby="username-label" aria-required="true" value="" required autoComplete="email" autoCapitalize="none" spellCheck="false" autoFocus>
+                          </div>
+                        
+                          
+                            <div id="error-cs-username-required" class="ulp-error-info aria-error-check" data-ulp-validation-function="ulpRequiredFunction" data-ulp-validation-event-listeners="blur,change,input,focus" data-ulp-validation-target="username">
+                              Please enter an email address
+                            </div>
+                          
+                        
+                          
+                        
+                          
+                            <div id="error-cs-pattern-mismatch" class="ulp-error-info aria-error-check" data-ulp-validation-function="ulpPatternCheckFunction" data-ulp-validation-event-listeners="blur,change,input,focus" data-ulp-validation-target="username">
+                              
+                            </div>
+                          
+                        
+                          
+                        </div>
+                      
+                    
+                  
+                    
+                      <div class="input-wrapper _input-wrapper">
+                        <div class="c31a68a40 cb0a34949 password ceb055654 ulp-field" data-action-text="" data-alternate-action-text="">
+                          <label id="password-label" class="c04cb0d72 c0c66e5e2 c11afc435" for="password">
+                            Password
+                          
+                            <span class="required" aria-hidden="true">*</span>
+                          </label>
+                        
+                          <input class="input cad736208 c8df1647e" name="password" id="password" type="password" aria-labelledby="password-label" aria-required="true" required autoComplete="current-password" autoCapitalize="none" spellCheck="false">
+                        
+                          
+                            <button type="button" role="switch" aria-checked="false" aria-label="Show password" class="c4b96dbd3 ulp-button-icon js-required c58baf5af _button-icon" data-action="toggle">
+                              <span aria-hidden="true" class="password-icon-tooltip show-password-tooltip">Show password</span>
+                            
+                              <span aria-hidden="true" class="password-icon-tooltip hide-password-tooltip hide">Hide password</span>
+                            
+                              <span class="c7991f8da password js-required" aria-hidden="true"></span>
+                            </button>
+                          
+                        </div>
+                      
+                        
+                          <div id="error-cs-password-required" class="ulp-error-info aria-error-check" data-ulp-validation-function="ulpRequiredFunction" data-ulp-validation-event-listeners="blur,change,input,focus" data-ulp-validation-target="password">
+                            Password is required
+                          </div>
+                        
+                      
+                        
+                      
+                        
+                          <div id="error-cs-pattern-mismatch" class="ulp-error-info aria-error-check" data-ulp-validation-function="ulpPatternCheckFunction" data-ulp-validation-event-listeners="blur,change,input,focus" data-ulp-validation-target="password">
+                            
+                          </div>
+                        
+                      
+                        
+                      </div>
+                    
+                  
+                    
+                      
+                        <div data-captcha-provider="recaptcha_enterprise" data-captcha-sitekey="6LeD5FYoAAAAAAto5jQOO70fG0LcVFL_sMY3s0vZ" data-captcha-lang="en" class="ulp-captcha-container">
+                          
+                            <div class="ulp-recaptcha ulp-captcha" id="ulp-recaptcha"></div>
+                          
+                        
+                          
+                            <input type="hidden" name="captcha" value="">
+                          
+                        </div>
+                      
+                        <span id="error-element-third-party-captcha" class="ulp-input-error-message ulp-captcha-client-error hide">
+                          <span class="ulp-input-error-icon" role="img" aria-label="Error"></span>
+                        We couldn’t load the security challenge. Please try again. (Error code: #{errorCode})</span>
+                      
+                    
+                  </div>
+                </div>
+              
+                
+                  
+                    <p class="c41e0884f c675e5532">
+                      
+                        <a class="c25c89a5e c3f852be2 cf250f2ae" href="/u/login/password-reset-start/ScribdDB?state=hKFo2SBBWHdvTjBJb25naTl1cHE3SGxDSXVYbklKcjJWYlFNMaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFR0ZC1aYk9ZNWFtREhxQlNiZ2FMYjBnUHZHXzZKaUdio2NpZNkgZ3ljN3lyZnpzdkpmaXd5bHNlYXU4Y3g5dVZhb2FOU1A&amp;ui_locales=en">Forgot password?</a>
+                      
+                    </p>
+                  
+                
+              
+                
+              
+                <div class="cdebb54bf">
+                  
+                    <button type="submit" name="action" value="default" class="c4b96dbd3 cd18f2405 c58baf5af c7cf82566 c21f2cb77" data-action-button-primary="true">Continue</button>
+                  
+                </div>
+              </form>
+            
+          
+        
+          
+        
+          
+            <div class="ulp-alternate-action  _alternate-action __s16nu9">
+              <p class="ca2a6c57f c051ea1a2 c90f639f7">Don&#39;t have an account?
+                <a class="c25c89a5e cf250f2ae" href="/u/signup?state=hKFo2SBBWHdvTjBJb25naTl1cHE3SGxDSXVYbklKcjJWYlFNMaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFR0ZC1aYk9ZNWFtREhxQlNiZ2FMYjBnUHZHXzZKaUdio2NpZNkgZ3ljN3lyZnpzdkpmaXd5bHNlYXU4Y3g5dVZhb2FOU1A&amp;ui_locales=en">Sign up</a>
+              </p>
+            </div>
+          
+        
+          
+        
+          
+            <div class="c00894a57 cef55b3dd">
+              <span>Or</span>
+            </div>
+          
+        
+          
+            <div class="c8266fa57 c78b6b566">
+              
+            
+              
+                <form method="post" data-provider="google" class="cf8253666 cad952672 c26a2ca32" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SBBWHdvTjBJb25naTl1cHE3SGxDSXVYbklKcjJWYlFNMaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFR0ZC1aYk9ZNWFtREhxQlNiZ2FMYjBnUHZHXzZKaUdio2NpZNkgZ3ljN3lyZnpzdkpmaXd5bHNlYXU4Y3g5dVZhb2FOU1A">
+                
+                  <input type="hidden" name="connection" value="google-oauth2">
+                
+                  <button type="submit" class="c2cff1259 c918693c8 cf86fef60" data-provider="google" data-action-button-secondary="true">
+                    
+                      <span class="ce42770cf c390c7ad5" data-provider="google"></span>
+                    
+                  
+                    <span class="cc2f84869">Continue with Google</span>
+                  </button>
+                </form>
+              
+                <form method="post" data-provider="facebook" class="cf8253666 cad952672 c17dcb332" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SBBWHdvTjBJb25naTl1cHE3SGxDSXVYbklKcjJWYlFNMaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFR0ZC1aYk9ZNWFtREhxQlNiZ2FMYjBnUHZHXzZKaUdio2NpZNkgZ3ljN3lyZnpzdkpmaXd5bHNlYXU4Y3g5dVZhb2FOU1A">
+                
+                  <input type="hidden" name="connection" value="facebook">
+                
+                  <button type="submit" class="c2cff1259 c918693c8 c193519a4" data-provider="facebook" data-action-button-secondary="true">
+                    
+                      <span class="ce42770cf c390c7ad5" data-provider="facebook"></span>
+                    
+                  
+                    <span class="cc2f84869">Continue with Facebook</span>
+                  </button>
+                </form>
+              
+                <form method="post" data-provider="apple" class="cf8253666 cad952672 ca7433833" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SBBWHdvTjBJb25naTl1cHE3SGxDSXVYbklKcjJWYlFNMaFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFR0ZC1aYk9ZNWFtREhxQlNiZ2FMYjBnUHZHXzZKaUdio2NpZNkgZ3ljN3lyZnpzdkpmaXd5bHNlYXU4Y3g5dVZhb2FOU1A">
+                
+                  <input type="hidden" name="connection" value="apple">
+                
+                  <button type="submit" class="c2cff1259 c918693c8 c716f9b87" data-provider="apple" data-action-button-secondary="true">
+                    
+                      <span class="ce42770cf c390c7ad5" data-provider="apple"></span>
+                    
+                  
+                    <span class="cc2f84869">Continue with Apple</span>
+                  </button>
+                </form>
+              
+            
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+  </section>
+</main>
+<script id="client-scripts">
+window.ulpFlags = {"enable_ulp_wcag_compliance":true,"enable_ulp_rtl_support":false,"disable_ulp_form_submission_fix":false};!function(){var e,t,r,n,S,A,F,T,k,L,a,q,P,N,j,O,R,i,o,u={exports:function(e,t){return"object"==typeof e.ulpFlags&&null!==e.ulpFlags?e.ulpFlags:{}}}.exports(window,document),c=((e={}).exports=function(r,l){var n={},a={};function u(e,t){if(e.classList)return e.classList.add(t);var r=e.className.split(" ");-1===r.indexOf(t)&&(r.push(t),e.className=r.join(" "))}function i(e,t,r,n){return e.addEventListener(t,r,n)}function o(e){return"string"==typeof e}function c(e,t){return o(e)?l.querySelector(e):e.querySelector(t)}function s(e,t){if(e.classList)return e.classList.remove(t);var r=e.className.split(" "),n=r.indexOf(t);-1!==n&&(r.splice(n,1),e.className=r.join(" "))}function f(e,t){return e.getAttribute(t)}function d(e,t,r){return e.setAttribute(t,r)}function p(e){return e.remove()}var e=["text","number","email","password","tel","url"],t="select,textarea,"+e.map(function(e){return'input[type="'+e+'"]'}).join(",");return{addClass:u,toggleClass:function(e,t,r){if(!0===r||!1===r)return n=e,a=t,!0!==r?s(n,a):u(n,a);var n,a;if(e.classList)return e.classList.toggle(t);var i=e.className.split(" "),o=i.indexOf(t);-1!==o?i.splice(o,1):i.push(t),e.className=i.join(" ")},hasClass:function(e,t){return e.classList?e.classList.contains(t):-1!==e.className.split(" ").indexOf(t)},addClickListener:function(e,t){return i(e,"click",t)},addEventListener:i,getAttribute:f,hasAttribute:function(e,t){return e.hasAttribute(t)},getElementById:function(e){return l.getElementById(e)},getParent:function(e){return e.parentNode},isString:o,loadScript:function(e,t){var r=l.createElement("script");for(var n in t)n.startsWith("data-")?r.dataset[n.replace("data-","")]=t[n]:r[n]=t[n];r.src=e,l.body.appendChild(r)},removeScript:function(e){l.querySelectorAll('script[src="'+e+'"]').forEach(function(e){e.remove()})},poll:function(e){var i=e.interval||2e3,t=e.url||r.location.href,o=e.condition||function(){return!0},u=e.onSuccess||function(){},c=e.onError||function(){};return setTimeout(function n(){if(l.hidden)return setTimeout(n,i);var a=new XMLHttpRequest;return a.open("GET",t),a.setRequestHeader("Accept","application/json"),a.onload=function(){if(200===a.status){var e="application/json"===a.getResponseHeader("Content-Type").split(";")[0]?JSON.parse(a.responseText):a.responseText;return o(e)?u():setTimeout(n,i)}if(429!==a.status)return c({status:a.status,responseText:a.responseText});var t=1e3*Number.parseInt(a.getResponseHeader("X-RateLimit-Reset")),r=t-(new Date).getTime();return setTimeout(n,i<r?r:i)},a.send()},i)},querySelector:c,querySelectorAll:function(e,t){var r=o(e)?l.querySelectorAll(e):e.querySelectorAll(t);return Array.prototype.slice.call(r)},removeClass:s,removeElement:p,setAttribute:d,removeAttribute:function(e,t){return e.removeAttribute(t)},swapAttributes:function(e,t,r){var n=f(e,t),a=f(e,r);d(e,r,n),d(e,t,a)},setGlobalFlag:function(e,t){n[e]=!!t},getGlobalFlag:function(e){return!!n[e]},setSubmittedForm:function(e,t){a[e]=t},getSubmittedForm:function(e){return a[e]},preventFormSubmit:function(e){e.stopPropagation(),e.preventDefault()},matchMedia:function(e){return"function"!=typeof r.matchMedia&&r.matchMedia(e).matches},dispatchEvent:function(e,t,r){var n;"function"!=typeof Event?(n=l.createEvent("Event")).initCustomEvent(t,r,!1):n=new Event(t,{bubbles:r}),e.dispatchEvent(n)},timeoutPromise:function(e,a){return new Promise(function(t,r){var n=setTimeout(function(){r(new Error("timeoutPromise: promise timed out"))},e);a.then(function(e){clearTimeout(n),t(e)},function(e){clearTimeout(n),r(e)})})},createMutationObserver:function(e){return"undefined"==typeof MutationObserver?null:new MutationObserver(e)},consoleWarn:function(){(console.warn||console.log).apply(console,arguments)},getConfigJson:function(e){try{var t=c(e);if(!t)return null;var r=t.value;return r?JSON.parse(r):null}catch(e){return null}},getCSSVariable:function(e){return getComputedStyle(l.documentElement).getPropertyValue(e)},removeAndTrimString:function(e,t){var r=new RegExp(t,"g"),n=e.replace(r,"");return n=n.replace(/\s+/g,"  ").trim()},htmlEncode:function(e){var t=l.createTextNode(e),r=l.createElement("span");return r.appendChild(t),r.innerHTML||""},cleanServerErrorMessage:function(e,t){0<e.length&&0<t.length&&t.forEach(function(e){p(e)})},arrayFrom:function(e){return Array.prototype.slice.call(e)},arrayIncludes:function(e,t){return-1!==e.indexOf(t)},stringStartsWith:function(e,t){return 0===e.indexOf(t)},stringEndsWith:function(e,t){return-1!==e.indexOf(t,e.length-t.length)},setTimeout:setTimeout,globalWindow:r,SUPPORTED_INPUT_TYPES:e,ELEMENT_TYPE_SELECTOR:t,RUN_INIT:!0}},e.exports)(window,document),l=function(){var e={};function g(e){if(!("string"==typeof e||e instanceof String)){var t=typeof e;throw null===e?t="null":"object"===t&&(t=e.constructor.name),new TypeError("Expected a string but received a "+t)}}function b(e,t){var r,n;g(e),n="object"==typeof t?(r=t.min||0,t.max):(r=t,arguments[2]);var a=encodeURI(e).split(/%..|./).length-1;return r<=a&&(void 0===n||a<=n)}function w(e,t){for(var r in void 0===e&&(e={}),t)void 0===e[r]&&(e[r]=t[r]);return e}var _={require_tld:!0,allow_underscores:!1,allow_trailing_dot:!1,allow_numeric_tld:!1,allow_wildcard:!1,ignore_max_length:!1},t="(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])",r="("+t+"[.]){3}"+t,n=new RegExp("^"+r+"$"),a="(?:[0-9a-fA-F]{1,4})",i=new RegExp("^((?:"+a+":){7}(?:"+a+"|:)|(?:"+a+":){6}(?:"+r+"|:"+a+"|:)|(?:"+a+":){5}(?::"+r+"|(:"+a+"){1,2}|:)|(?:"+a+":){4}(?:(:"+a+"){0,1}:"+r+"|(:"+a+"){1,3}|:)|(?:"+a+":){3}(?:(:"+a+"){0,2}:"+r+"|(:"+a+"){1,4}|:)|(?:"+a+":){2}(?:(:"+a+"){0,3}:"+r+"|(:"+a+"){1,5}|:)|(?:"+a+":){1}(?:(:"+a+"){0,4}:"+r+"|(:"+a+"){1,6}|:)|(?::((?::"+a+"){0,5}:"+r+"|(?::"+a+"){1,7}|:)))(%[0-9a-zA-Z-.:]{1,})?$");function x(e,t){return void 0===t&&(t=""),g(e),(t=String(t))?"4"===t?n.test(e):"6"===t&&i.test(e):x(e,4)||x(e,6)}var y={allow_display_name:!1,allow_underscores:!1,require_display_name:!1,allow_utf8_local_part:!0,require_tld:!0,blacklisted_chars:"",ignore_max_length:!1,host_blacklist:[],host_whitelist:[]},E=/^([^\x00-\x1F\x7F-\x9F\cX]+)</i,C=/^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~]+$/i,S=/^[a-z\d]+$/,A=/^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f]))*$/i,F=/^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~\u00A1-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+$/i,T=/^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*$/i,k=254;function o(e,t,r,n,a){if(g(e),e=e.trim(),(t=w(t,y)).require_display_name||t.allow_display_name){var i=e.match(E);if(i){var o=i[1];if(e=e.replace(o,"").replace(/(^<|>$)/g,""),a(o," ")&&(o=o.slice(0,-1)),!function(e){var t=e.replace(/^"(.+)"$/,"$1");if(!t.trim())return!1;if(/[\.";<>]/.test(t)){if(t===e)return!1;if(t.split('"').length!==t.split('\\"').length)return!1}return!0}(o))return!1}else if(t.require_display_name)return!1}if(!t.ignore_max_length&&e.length>k)return!1;var u=e.split("@"),c=u.pop(),l=c.toLowerCase();if(r(t.host_blacklist,l))return!1;if(0<t.host_whitelist.length&&!r(t.host_whitelist,l))return!1;var s=u.join("@");if(t.domain_specific_validation&&("gmail.com"===l||"googlemail.com"===l)){var f=(s=s.toLowerCase()).split("+")[0];if(!b(f.replace(/\./g,""),{min:6,max:30}))return!1;for(var d=f.split("."),p=0;p<d.length;p++)if(!S.test(d[p]))return!1}if(!(!1!==t.ignore_max_length||b(s,{max:64})&&b(c,{max:254})))return!1;if(!function(e,t){g(e),(t=w(t,_)).allow_trailing_dot&&"."===e[e.length-1]&&(e=e.substring(0,e.length-1)),!0===t.allow_wildcard&&0===e.indexOf("*.")&&(e=e.substring(2));var r=e.split("."),n=r[r.length-1];if(t.require_tld){if(r.length<2)return!1;if(!t.allow_numeric_tld&&!/^([a-z\u00A1-\u00A8\u00AA-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]{2,}|xn[a-z0-9-]{2,})$/i.test(n))return!1;if(/\s/.test(n))return!1}return!(!t.allow_numeric_tld&&/^\d+$/.test(n))&&r.every(function(e){return!(63<e.length&&!t.ignore_max_length||!/^[a-z_\u00a1-\uffff0-9-]+$/i.test(e)||/[\uff01-\uff5e]/.test(e)||/^-|-$/.test(e)||!t.allow_underscores&&/_/.test(e))})}(c,{require_tld:t.require_tld,ignore_max_length:t.ignore_max_length,allow_underscores:t.allow_underscores})){if(!t.allow_ip_domain)return!1;if(!x(c)){if(!n(c,"[")||!a(c,"]"))return!1;var h=c.slice(1,-1);if(0===h.length||!x(h))return!1}}if('"'===s[0])return s=s.slice(1,s.length-1),t.allow_utf8_local_part?T.test(s):A.test(s);for(var v=t.allow_utf8_local_part?F:C,m=(d=s.split("."),0);m<d.length;m++)if(!v.test(d[m]))return!1;return!t.blacklisted_chars||-1===s.search(new RegExp("["+t.blacklisted_chars+"]+","g"))}return e.exports=function(e,t,r,n,a){return{ulpRequiredFunction:function(e,t){return!t||!!e.value},ulpEmailValidationFunction:function(e,t){return!t||!e.value||!!o(e.value,void 0,r,n,a)},ulpPatternCheckFunction:function(e,t){return!t||!e.value||function(e){if("password"===e.name)return!0;var t=e.getAttribute("pattern");return!t||null!==e.value.match(t)}(e)}}},e.exports}()(window,document,c.arrayIncludes,c.stringStartsWith,c.stringEndsWith);((t={}).exports=function(n,e,o,u,c,l,s,f,t){function d(e){"Escape"==e.code&&document.activeElement.blur()}t.enable_ulp_wcag_compliance&&e("div.c31a68a40.password").forEach(function(e){var a,i,t=n(e,"input"),r=n(e,'[data-action="toggle"]');o(e,(a=t,i=r,function(e){if(e.target.classList.contains("ulp-button-icon")){if(a.type="password"===a.type?"text":"password",i){i.ariaChecked="false"===i.ariaChecked?"true":"false";var t=i.querySelector(".show-password-tooltip"),r=i.querySelector(".hide-password-tooltip");t&&s(t,"hide"),r&&s(r,"hide")}var n=f(a);"text"===a.type?c(n,"show"):l(n,"show")}})),u(r,"keyup",d)})},t.exports)(c.querySelector,c.querySelectorAll,c.addClickListener,c.addEventListener,c.addClass,c.removeClass,c.toggleClass,c.getParent,u),((r={}).exports=function(n,e,o,u,c,l,s,t){t.enable_ulp_wcag_compliance||e("div.c31a68a40.password").forEach(function(e){var a,i,t=n(e,"input"),r=n(e,'[data-action="toggle"]');o(e,(a=t,i=r,function(e){if(e.target.classList.contains("ulp-button-icon")){if(a.type="password"===a.type?"text":"password",i){var t=i.querySelector(".show-password-tooltip"),r=i.querySelector(".hide-password-tooltip");t&&l(t,"hide"),r&&l(r,"hide")}var n=s(a);"text"===a.type?u(n,"show"):c(n,"show")}}))})},r.exports)(c.querySelector,c.querySelectorAll,c.addClickListener,c.addClass,c.removeClass,c.toggleClass,c.getParent,u),{exports:function(e,n,a,t){var r=e(".c4a3cd70d"),i=e("#alert-trigger"),o=e(".c45ea5957"),u=e(".c304d88ee"),c=!1;i&&u&&r&&t(r,function(e){var t=e.target===i,r=u.contains(e.target);return t&&!c?(n(o,"show"),void(c=!0)):t&&c||c&&!r?(a(o,"show"),void(c=!1)):void 0})}}.exports(c.querySelector,c.addClass,c.removeClass,c.addClickListener),(S="recaptcha_v2",A="recaptcha_enterprise",F="hcaptcha",T="friendly_captcha",k="arkose",L="auth0_v2",(n={}).exports=function(i,o,a,u,c,l,s,f,e){if(!e.enable_ulp_rtl_support){var d=500,p=3,h=0,v=a("div[data-captcha-sitekey]"),m=a(".ulp-captcha-client-error"),t=a("div[data-captcha-sitekey] input");v&&function(){var e="captchaCallback_"+Math.floor(1000001*Math.random()),t=_(),r={async:!0,defer:!0},n=function(e,t,r,n){switch(_()){case S:return"https://www.recaptcha.net/recaptcha/api.js?render=explicit&hl="+e+"&onload="+t;case A:return"https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl="+e+"&onload="+t;case F:return"https://js.hcaptcha.com/1/api.js?render=explicit&hl="+e+"&onload="+t;case T:return"https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.14/widget.min.js";case k:return"https://"+r+".arkoselabs.com/v2/"+n+"/api.js";case L:return"https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload="+t}}(w(),e,v.getAttribute("data-captcha-client-subdomain"),x());if(t===k||t===L){r["data-callback"]=e,r.onerror=function(){if(h<p)return o(n),i(n,r),void h++;o(n),E("BYPASS_CAPTCHA")};var a=function(e){var t,r;t=e,r=function(e){setTimeout(function(){t.run()},d),e.preventDefault()},y().addEventListener("submit",r),t.setConfig({onCompleted:function(e){E(e.token),y().submit()},onError:function(e){return fetch("https://status.arkoselabs.com/api/v2/status.json").then(function(e){return e.json()}).then(function(e){var t=e.status.indicator;return"none"===t}).catch(function(e){return!1}).then(function(e){if(e&&h<p)return t.reset(),new Promise(function(e){setTimeout(function(){e(t.run())},d),h++});E("BYPASS_CAPTCHA"),y().removeEventListener("submit",r)})}})};t===L&&(a=function(){C()}),window[e]=a}else window[e]=function(){delete window[e],C()},t===T&&(u(b(),"frc-captcha"),s(b(),"data-sitekey",x()),r.onload=window[e]);i(n,r)}()}function g(){switch(_()){case S:return window.grecaptcha;case A:return window.grecaptcha.enterprise;case F:return window.hcaptcha;case T:return window.friendlyChallenge;case k:return window.arkose;case L:return window.turnstile}}function b(){return a(function(){switch(_()){case S:case A:return"#ulp-recaptcha";case F:return"#ulp-hcaptcha";case T:return"#ulp-friendly-captcha";case k:return"#ulp-arkose";case L:return"#ulp-auth0-v2-captcha"}}())}function w(){return v.getAttribute("data-captcha-lang")}function _(){return v.getAttribute("data-captcha-provider")}function x(){return v.getAttribute("data-captcha-sitekey")}function y(){return a('form[data-form-primary="true"]')}function E(e){return t.value=e}function C(){var e=g(),t=l("--ulp-captcha-widget-theme")||"light";if(_()===T)"dark"===t&&u(a(".frc-captcha"),"dark"),(n=e.autoWidget).opts.language=w(),n.opts.doneCallback=function(e){E(e)};else{var r={sitekey:x(),theme:t,"expired-callback":function(){E(""),u(v,"cd6ba2231"),e.reset(n)},callback:function(e){E(e),c(v,"cd6ba2231")}};_()===L&&(r.language=w(),r.retry="never",r.size="flexible",r["response-field"]=!1,r["error-callback"]=function(e){return console.error("ERROR: Auth Challenge Error Code",e),E(""),h<p?(h++,g().reset(n)):(m.innerHTML=m.innerHTML.replace("#{errorCode}",f(e)),u(v,"cd6ba2231"),c(m,"hide")),!0});var n=e.render(b(),r)}}},n.exports)(c.loadScript,c.removeScript,c.querySelector,c.addClass,c.removeClass,c.getCSSVariable,c.setAttribute,c.htmlEncode,u),(q="recaptcha_v2",P="recaptcha_enterprise",N="hcaptcha",j="friendly_captcha",O="arkose",R="auth0_v2",(a={}).exports=function(i,o,a,u,c,l,s,f,e){if(e.enable_ulp_rtl_support){var d=500,p=3,h=0,v=a("div[data-captcha-sitekey]"),m=a(".ulp-captcha-client-error"),t=a("div[data-captcha-sitekey] input");v&&function(){var e="captchaCallback_"+Math.floor(1000001*Math.random()),t=_(),r={async:!0,defer:!0},n=function(e,t,r,n){switch(_()){case q:return"https://www.recaptcha.net/recaptcha/api.js?render=explicit&hl="+e+"&onload="+t;case P:return"https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl="+e+"&onload="+t;case N:return"https://js.hcaptcha.com/1/api.js?render=explicit&hl="+e+"&onload="+t;case j:return"https://cdn.jsdelivr.net/npm/friendly-challenge@0.9.14/widget.min.js";case O:return"https://"+r+".arkoselabs.com/v2/"+n+"/api.js";case R:return"https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload="+t}}(w(),e,v.getAttribute("data-captcha-client-subdomain"),x());if(t===O||t===R){r["data-callback"]=e,r.onerror=function(){if(h<p)return o(n),i(n,r),void h++;o(n),E("BYPASS_CAPTCHA")};var a=function(e){var t,r;t=e,r=function(e){setTimeout(function(){t.run()},d),e.preventDefault()},y().addEventListener("submit",r),t.setConfig({language:w(),onCompleted:function(e){E(e.token),y().submit()},onError:function(e){return fetch("https://status.arkoselabs.com/api/v2/status.json").then(function(e){return e.json()}).then(function(e){var t=e.status.indicator;return"none"===t}).catch(function(e){return!1}).then(function(e){if(e&&h<p)return t.reset(),new Promise(function(e){setTimeout(function(){e(t.run())},d),h++});E("BYPASS_CAPTCHA"),y().removeEventListener("submit",r)})}})};t===R&&(a=function(){C()}),window[e]=a}else window[e]=function(){delete window[e],C()},t===j&&(u(b(),"frc-captcha"),s(b(),"data-sitekey",x()),s(b(),"data-lang",w()),r.onload=window[e]);i(n,r)}()}function g(){switch(_()){case q:return window.grecaptcha;case P:return window.grecaptcha.enterprise;case N:return window.hcaptcha;case j:return window.friendlyChallenge;case O:return window.arkose;case R:return window.turnstile}}function b(){return a(function(){switch(_()){case q:case P:return"#ulp-recaptcha";case N:return"#ulp-hcaptcha";case j:return"#ulp-friendly-captcha";case O:return"#ulp-arkose";case R:return"#ulp-auth0-v2-captcha"}}())}function w(){return v.getAttribute("data-captcha-lang")}function _(){return v.getAttribute("data-captcha-provider")}function x(){return v.getAttribute("data-captcha-sitekey")}function y(){return a('form[data-form-primary="true"]')}function E(e){return t.value=e}function C(){var e=g(),t=l("--ulp-captcha-widget-theme")||"light";if(_()===j)"dark"===t&&u(a(".frc-captcha"),"dark"),(n=e.autoWidget).opts.language=w(),n.opts.doneCallback=function(e){E(e)};else{var r={sitekey:x(),theme:t,"expired-callback":function(){E(""),u(v,"cd6ba2231"),e.reset(n)},callback:function(e){E(e),c(v,"cd6ba2231")}};_()===R&&(r.language=w(),r.retry="never",r.size="flexible",r["response-field"]=!1,r["error-callback"]=function(e){return console.error("ERROR: Auth Challenge Error Code",e),E(""),h<p?(h++,g().reset(n)):(m.innerHTML=m.innerHTML.replace("#{errorCode}",f(e)),u(v,"cd6ba2231"),c(m,"hide")),!0});var n=e.render(b(),r)}}},a.exports)(c.loadScript,c.removeScript,c.querySelector,c.addClass,c.removeClass,c.getCSSVariable,c.setAttribute,c.htmlEncode,u),((i={}).exports=function(n,e,a,i,o,u,c,l,r,s,t){if(!t.enable_ulp_wcag_compliance){if(n("body._simple-labels"))return e(".c04cb0d72.no-js").forEach(function(e){o(e,"no-js")}),void e(".c04cb0d72.js-required").forEach(function(e){i(e,"hide")});e(".c31a68a40:not(.cf99ebdd1):not(disabled)").forEach(function(e){i(e,"ce5187e40");var t,r=n(e,".input");r.value&&i(e,"c4b4b9b9b"),a(e,"change",f),a(r,"blur",f),a(r,"animationstart",d),t=r,c(function(){t.value&&l(t,"change",!0)},100)})}function f(e){var t=e.target,r=u(t);t.value||s(t,"data-autofilled")?i(r,"c4b4b9b9b"):o(r,"c4b4b9b9b")}function d(e){var t=e.target;"onAutoFillStart"===e.animationName&&(r(t,"data-autofilled",!0),l(e.target,"change",!0),a(t,"keyup",p,{once:!0}))}function p(e){var t=e.target;r(t,"data-autofilled","")}},i.exports)(c.querySelector,c.querySelectorAll,c.addEventListener,c.addClass,c.removeClass,c.getParent,c.setTimeout,c.dispatchEvent,c.setAttribute,c.getAttribute,u),{exports:function(e,t,n,a,i,o,u,c){function r(e){var t=n("submitted"),r=i("submittedForm");a("submitted",!0),o("submittedForm",e.currentTarget),t&&r&&r===e.currentTarget?u(e):"apple"===c(e.target,"data-provider")&&setTimeout(function(){a("submitted",!1)},2e3)}var l=e("form");l&&l.forEach(function(e){t(e,"submit",r)})}}.exports(c.querySelectorAll,c.addEventListener,c.getGlobalFlag,c.setGlobalFlag,c.getSubmittedForm,c.setSubmittedForm,c.preventFormSubmit,c.getAttribute),{exports:function(r,e,n,a,i,o,u,c,l,t,s,f){if(f.enable_ulp_wcag_compliance){var d=e("[id^='ulp-container-']");if(d&&d.length){var p=t(x);if(p)for(var h=0;h<d.length;h++)p.observe(d[h],{childList:!0,subtree:!0})}x()}function v(e){var t=e.target,r=o(t);t.value||c(t,"data-autofilled")?a(r,"c4b4b9b9b"):i(r,"c4b4b9b9b")}function m(e){var t=e.target,r=o(t);a(r,"focus"),_(t,r)}function g(e){var t=e.target,r=o(t);i(r,"focus"),v(e),_(t,r)}function b(e){var t=e.target;l(t,"data-autofilled","")}function w(e){var t=e.target;"onAutoFillStart"===e.animationName&&(l(t,"data-autofilled",!0),dispatchEvent(e.target,"change",!0),n(t,"keyup",b,{once:!0}))}function _(e,t){e.value?a(t,"c4b4b9b9b"):i(t,"c4b4b9b9b")}function x(){e(".ulp-field").forEach(function(e){if(!u(e,"ce5187e40")){var t=r(e,s);t&&(a(e,"ce5187e40"),_(t,e),setTimeout(function(){_(t,e)},50),t===document.activeElement&&a(e,"focus"),n(t,"change",v),n(t,"focus",m),n(t,"blur",g),n(t,"animationstart",w))}})}}}.exports(c.querySelector,c.querySelectorAll,c.addEventListener,c.addClass,c.removeClass,c.getParent,c.hasClass,c.getAttribute,c.setAttribute,c.createMutationObserver,c.ELEMENT_TYPE_SELECTOR,u),{exports:function(r,e,n,a,i,o,u,t,c,l){if(!l.enable_ulp_wcag_compliance){var s=e("[id^='ulp-container-']");if(s&&s.length){var f=t(g);if(f)for(var d=0;d<s.length;d++)f.observe(s[d],{childList:!0,subtree:!0});g()}}function p(e){var t=e.target,r=o(t);t.value?a(r,"c4b4b9b9b"):i(r,"c4b4b9b9b")}function h(e){var t=e.target,r=o(t);a(r,"focus"),m(t,r)}function v(e){var t=e.target,r=o(t);i(r,"focus"),m(t,r)}function m(e,t){e.value?a(t,"c4b4b9b9b"):i(t,"c4b4b9b9b")}function g(){e("[id^='ulp-container-'] .ulp-field").forEach(function(e){if(!u(e,"ce5187e40")){var t=r(e,c);t&&(a(e,"ce5187e40"),m(t,e),setTimeout(function(){m(t,e)},50),t===document.activeElement&&a(e,"focus"),n(t,"change",p),n(t,"focus",h),n(t,"blur",v))}})}}}.exports(c.querySelector,c.querySelectorAll,c.addEventListener,c.addClass,c.removeClass,c.getParent,c.hasClass,c.createMutationObserver,c.ELEMENT_TYPE_SELECTOR,u),{exports:function(n,o,a,i,u,c,l,s,f,d,p,h,t,v,m,e,r,g){if(g.enable_ulp_wcag_compliance){var b=!1,w=e+',input[type="checkbox"]';return F(),[w,_,x,y,E,C,S,A,F]}function _(e){var t=u(e,"data-ulp-validation-function"),r=i(e);return{functionName:t,element:n(r,w),parent:r}}function x(e){var a=[],i=[];return o(e,"[data-ulp-validation-function]").forEach(function(e){var t=_(e),r=[];if(t.element){if("input"===t.element.tagName.toLowerCase()){var n=u(t.element,"type");"checkbox"!==n&&-1===m.indexOf(n)&&r.push("Unsupported input type: "+n)}}else r.push("Could not find element");h[t.functionName]||r.push("Could not find function with name: "+t.functionName),r.length?i=i.concat(r):a.push(e)}),i.length&&t(i.join("\r\n")),a}function y(e,t,r){var n=_(e),a=(0,h[n.functionName])(n.element,t,r);a?s(e,"ulp-validator-error")&&(d(e,"ulp-validator-error"),l(e,"data-is-error")):s(e,"ulp-validator-error")||(f(e,"ulp-validator-error"),c(e,"data-is-error",!0));var i=o(n.parent,".ulp-validator-error");return p(n.parent,"ulp-error",!!i.length),a}function E(t){var r=_(t),e=(u(t,"data-ulp-validation-event-listeners")||"").replace(/\s/g,"").split(",").filter(function(e){return!!e});e.length&&e.forEach(function(e){a(r.element,e,function(){y(t,b,e)})})}function C(e,t,r){b=!0;var n=r.filter(function(e){return!y(e,b,"submit")});if(!n.length)return t.submitter&&"default"==u(t.submitter,"value")&&c(t.submitter,"disabled",!0),void e.submit();v(t);var a=_(n[0]);a.element.focus({preventScroll:!0}),a.parent.scrollIntoView({behavior:"smooth"})}function S(){var t=n('form[data-form-primary="true"]'),r=x(t);0!==r.length&&(r.forEach(function(e){E(e)}),a(t,"submit",function(e){C(t,e,r)}))}function A(){if(r)for(var e in r)r.hasOwnProperty(e)&&(h[e]=r[e])}function F(){var e=n("form[data-disable-html-validations]");e&&(A(),c(e,"novalidate",""),S())}}}.exports(c.querySelector,c.querySelectorAll,c.addEventListener,c.getParent,c.getAttribute,c.setAttribute,c.removeAttribute,c.hasClass,c.addClass,c.removeClass,c.toggleClass,c.globalWindow,c.consoleWarn,c.preventFormSubmit,c.SUPPORTED_INPUT_TYPES,c.ELEMENT_TYPE_SELECTOR,l,u),{exports:function(n,o,a,i,u,c,l,t,s,f,e,r){if(!r.enable_ulp_wcag_compliance){var d=!1,p=e+',input[type="checkbox"]';return _(),[p,h,v,m,g,b,w,_]}function h(e){var t=u(e,"data-ulp-validation-function"),r=i(e);return{functionName:t,element:n(r,p),parent:r}}function v(e){var a=[],i=[];return o(e,"[data-ulp-validation-function]").forEach(function(e){var t=h(e),r=[];if(t.element){if("input"===t.element.tagName.toLowerCase()){var n=u(t.element,"type");"checkbox"!==n&&-1===f.indexOf(n)&&r.push("Unsupported input type: "+n)}}else r.push("Could not find element");l[t.functionName]||r.push("Could not find function with name: "+t.functionName),r.length?i=i.concat(r):a.push(e)}),i.length&&t(i.join("\r\n")),a}function m(e,t,r){var n=h(e),a=(0,l[n.functionName])(n.element,t,r);c(e,"ulp-validator-error",!a);var i=o(n.parent,".ulp-validator-error");return c(n.parent,"ulp-error",!!i.length),a}function g(t){var r=h(t),e=(u(t,"data-ulp-validation-event-listeners")||"").replace(/\s/g,"").split(",").filter(function(e){return!!e});e.length&&e.forEach(function(e){a(r.element,e,function(){m(t,d,e)})})}function b(e,t,r){d=!0;var n=r.filter(function(e){return!m(e,d,"submit")});if(n.length){s(t);var a=h(n[0]);a.element.focus({preventScroll:!0}),a.parent.scrollIntoView({behavior:"smooth"})}else e.submit()}function w(){var t=n('form[data-form-primary="true"]'),r=v(t);0!==r.length&&(r.forEach(function(e){g(e)}),a(t,"submit",function(e){b(t,e,r)}))}function _(){var e=o("[id^='ulp-container-']");e&&e.length&&w()}}}.exports(c.querySelector,c.querySelectorAll,c.addEventListener,c.getParent,c.getAttribute,c.toggleClass,c.globalWindow,c.consoleWarn,c.preventFormSubmit,c.SUPPORTED_INPUT_TYPES,c.ELEMENT_TYPE_SELECTOR,u),{exports:function(e,t,r){function n(r){t(r,"click",function(e){e.preventDefault();var t=document.createElement("input");t.name="action",t.type="hidden",t.value=r.value,r.form.appendChild(t),r.form.submit(),r.form.removeChild(t)})}function a(){e('form button[type="submit"][formnovalidate], form input[type="submit"][formnovalidate]').forEach(function(e){n(e)})}return r&&a(),[a,n]}}.exports(c.querySelectorAll,c.addEventListener,c.RUN_INIT),((o={}).exports=function(o,e,u,c,l,s,t,f,r){if(r.enable_ulp_wcag_compliance){var n=e('[class*="aria-error-check"]');if(n&&n.length){var a=t(function(e){e&&e.length&&e.map(function(e){if(e.target&&u(e.target,"aria-error-check")){var t=o('[id="'+c(e.target,"data-ulp-validation-target")+'"');if(t){var r=c(t,"aria-describedby");c(e.target,"data-is-error")?(n=t,a=r,i=e.target.id,a&&-1!==a.search(i)||l(n,"aria-describedby",a?a+" "+i:i),l(n,"aria-invalid",!0)):function(e,t,r){if(t){var n=f(t,r);n.length?l(e,"aria-describedby",n):(s(e,"aria-invalid"),s(e,"aria-describedby"))}else s(e,"aria-invalid"),s(e,"aria-describedby")}(t,r,e.target.id)}}var n,a,i})});a&&n.map(function(e){a.observe(e,{attributes:!0,attributeFilter:["class","data-is-error"]})})}}},o.exports)(c.querySelector,c.querySelectorAll,c.hasClass,c.getAttribute,c.setAttribute,c.removeAttribute,c.createMutationObserver,c.removeAndTrimString,u)}();
+</script>
+</body>
+
+<!-- Everand signup subtext -->
+<script>
+  
+</script>
+
+<!-- Behavior tag and header spacing -->
+<script>
+  const headerContainer = document.querySelector("header");
+
+  
+    const extraHeaderSpace = document.createElement("div");
+    extraHeaderSpace.setAttribute("class", "extra-header-space")
+    headerContainer.prepend(extraHeaderSpace);
+  
+</script>
+
+<!-- Scribd specific styles -->
+<script>
+  
+    const divider = document.querySelector("section > div > div > div > div:nth-child(3)");
+    if (divider) {
+      divider.classList.add("divider");
+    }
+
+    const password = document.querySelector("form > p > a");
+    if (password) {
+      password.classList.add("forgot-password");
+    }
+  
+</script>
+
+<!-- Alternate action section and Terms of Service -->
+<script>
+  const alternateActionsElements = document.querySelectorAll(".ulp-alternate-action");
+  const alternateActionsContainer = alternateActionsElements[alternateActionsElements.length - 1];
+
+  
+</script>
+
+<!-- Footer text and branding -->
+<script>
+  let footerImageText = null;
+  let footerImage = null;
+
+  
+    footerImageText = document.createElement("p");
+    footerImageText.innerHTML = `ONE SUBSCRIPTION FOR`;
+    footerImageText.setAttribute("class", "footer-img-text");
+
+    footerImage = document.createElement("img");
+    footerImage.setAttribute("class", "footer-img");
+    footerImage.setAttribute("alt", `One subscription for Scribd, Everand, and SlideShare` | "");
+    
+    
+      footerImage.setAttribute("src", "https://s-f.scribdassets.com/images/auth0/scribd_all_brands_logo.svg")
+    
+  
+
+  
+    if (Boolean(alternateActionsContainer) && footerImageText && footerImage) {
+      alternateActionsContainer.appendChild(footerImageText);
+      alternateActionsContainer.appendChild(footerImage);
+    }
+  
+
+  
+</script>
+
+</html>
